@@ -5,10 +5,10 @@
 .stat {width: 20px;}
 #health {width: 20px;}
 #mana {width: 20px;}
-#container {}
+#container {width: 500px;}
 .stats { text-align:right; padding: 5px; vertical-align:top;}
 .traits { text-align:left; padding: 5px; vertical-align:top;}
-.print { padding: 10px; border: 1px solid black;}
+.print { padding: 10px; border: 1px solid black; width:600px;}
 </style>
 <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
 <script src="http://code.jquery.com/ui/1.10.4/jquery-ui.min.js"></script>
@@ -23,16 +23,17 @@ $(function (){
 </head>
 
 <body>
+<h2>Tournament of Champions Character Builder</h2>
 <div id="container">
 	<div>Name: <input type="text" id="name" value="Player"></div>
 	<div class="status">
 		Health: <input type="text" id="health">/<span id="maxHealth"></span>
-		<span class="magic">Mana: <input type="text" id="mana" value=0>/<span id="maxMana" /></span></span>
-		<button id="maxStatus">Max</button>
+		<span class="magic"> Mana: <input type="text" id="mana" value=0>/<span id="maxMana" /></span></span>
+		<br><button id="maxStatus">Max</button>
 	</div>
-	<table>
+	<table style="width: 400px">
 	<tr>
-	<td class="stats">
+	<td class="stats" style="width: 50%">
 		<div>Strength: <input id="strength" class="stat"></div>
 		<div>Speed: <input id="speed" class="stat"></div>
 		<div>Stamina: <input id="stamina" class="stat"></div>
@@ -46,15 +47,14 @@ $(function (){
 		<div>Kit #1: <select id="kit1" class="kit"></select></div>
 		<div>Kit #2: <select id="kit2" class="kit"></select></div>
 		<div class="magic">
-			<div>Spells: TODO</div>
-			<div>Masteries: TODO</div>
+			<div><i>Spells and Masteries can written in under "Extra Trait Text" for now.</i></div>
 		</div>
 	</td>
 	</tr>
 	</table>
 </div>
-<div>Extra Status:<textarea id="statusText"></textarea></div>
-<div>Extra Traits:<textarea id="traitsText"></textarea></div>
+<div>Extra Status Text:<br><textarea id="statusText"></textarea></div>
+<div>Extra Trait Text:<br><textarea id="traitsText"></textarea></div>
 
 <div class="print">
 	<div id="preview"></div>
