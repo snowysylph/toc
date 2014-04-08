@@ -5,6 +5,10 @@
 .stat {width: 20px;}
 #health {width: 20px;}
 #mana {width: 20px;}
+#container {}
+.stats { text-align:right; padding: 5px; vertical-align:top;}
+.traits { text-align:left; padding: 5px; vertical-align:top;}
+.print { padding: 10px; border: 1px solid black;}
 </style>
 <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
 <script src="http://code.jquery.com/ui/1.10.4/jquery-ui.min.js"></script>
@@ -21,21 +25,40 @@ $(function (){
 <body>
 <div id="container">
 	<div>Name: <input type="text" id="name" value="Player"></div>
-	<div>Health: <input type="text" id="health" value=0>/<span id="maxHealth"></div>
-	<div>Mana: <input type="text" id="mana" value=0>/<span id="maxMana"></div>
-	<div>Archetype: <select id="archetype"></select></div>
-	<div>Strength: <input id="strength" class="stat"></div>
-	<div>Speed: <input id="speed" class="stat"></div>
-	<div>Stamina: <input id="stamina" class="stat"></div>
-	<div>Agility: <input id="agility" class="stat"></div>
-	<div>Will: <input id="will" class="stat"></div>
-	<div>Charm: <input id="charm" class="stat"></div>
-	<div>Kit #1: <select id="kit1" class="kit"></select>
-	<div>Kit #2: <select id="kit2" class="kit"></select>
-	<div>Spells:</div>
-	<div>Masteries:</div>
+	<div class="status">
+		Health: <input type="text" id="health">/<span id="maxHealth"></span>
+		<span class="magic">Mana: <input type="text" id="mana" value=0>/<span id="maxMana" /></span></span>
+		<button id="maxStatus">Max</button>
+	</div>
+	<table>
+	<tr>
+	<td class="stats">
+		<div>Strength: <input id="strength" class="stat"></div>
+		<div>Speed: <input id="speed" class="stat"></div>
+		<div>Stamina: <input id="stamina" class="stat"></div>
+		<div>Agility: <input id="agility" class="stat"></div>
+		<div>Will: <input id="will" class="stat"></div>
+		<div>Charm: <input id="charm" class="stat"></div>
+		<div><i>Stat Points Used: <span id="statTotal"></span></i></div>
+	</td>
+	<td class="traits">
+		<div>Archetype: <select id="archetype"></select></div>
+		<div>Kit #1: <select id="kit1" class="kit"></select></div>
+		<div>Kit #2: <select id="kit2" class="kit"></select></div>
+		<div class="magic">
+			<div>Spells: TODO</div>
+			<div>Masteries: TODO</div>
+		</div>
+	</td>
+	</tr>
+	</table>
 </div>
-<div id="preview"></div>
-<textarea id="output"></textarea>
+<div>Extra Status:<textarea id="statusText"></textarea></div>
+<div>Extra Traits:<textarea id="traitsText"></textarea></div>
+
+<div class="print">
+	<div id="preview"></div>
+	<textarea id="output"></textarea>
+</div>
 
 </body>
