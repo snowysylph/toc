@@ -65,7 +65,7 @@ toc.buildChar = function buildChar (){
 	
 	char.maxHealth = 4 * char.stamina;
 	char.maxMana = 0;
-	if (char.archetype == "mage") char.maxMana += 8;
+	if (char.archetype == "mage") char.maxMana += 12;
 	if (char.kits[0] == "sorcery") char.maxMana += 4;
 	if (char.kits[1] == "sorcery") char.maxMana += 4;
 	
