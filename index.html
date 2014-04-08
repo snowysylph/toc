@@ -1,0 +1,41 @@
+
+<head>
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
+<style>
+.stat {width: 20px;}
+#health {width: 20px;}
+#mana {width: 20px;}
+</style>
+<script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+<script src="http://code.jquery.com/ui/1.10.4/jquery-ui.min.js"></script>
+<script src="bbcode.js"></script>
+<script src="toc.js"></script>
+<script>
+$(function (){
+	toc.init();
+	toc.update();
+})
+</script>
+</head>
+
+<body>
+<div id="container">
+	<div>Name: <input type="text" id="name" value="Player"></div>
+	<div>Health: <input type="text" id="health" value=0>/<span id="maxHealth"></div>
+	<div>Mana: <input type="text" id="mana" value=0>/<span id="maxMana"></div>
+	<div>Archetype: <select id="archetype"></select></div>
+	<div>Strength: <input id="strength" class="stat"></div>
+	<div>Speed: <input id="speed" class="stat"></div>
+	<div>Stamina: <input id="stamina" class="stat"></div>
+	<div>Agility: <input id="agility" class="stat"></div>
+	<div>Will: <input id="will" class="stat"></div>
+	<div>Charm: <input id="charm" class="stat"></div>
+	<div>Kit #1: <select id="kit1" class="kit"></select>
+	<div>Kit #2: <select id="kit2" class="kit"></select>
+	<div>Spells:</div>
+	<div>Masteries:</div>
+</div>
+<div id="preview"></div>
+<textarea id="output"></textarea>
+
+</body>
