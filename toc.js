@@ -42,8 +42,8 @@ toc.update = function update (){
 		Number(char.will) +
 		Number(char.charm));
 	
-	if (char.maxMana)	$(".magic").show();
-	else $(".magic").hide();
+	if (char.maxMana)	$(".magic").show("fade");
+	else $(".magic").hide("fade");
 		
 	toc.printChar(char);
 }
@@ -100,6 +100,7 @@ toc.archetypes = {
 	fighter: {color: "orange"},
 	brute: {color: "green"},
 	mage: {color: "blue"},
+	ranger: {color: "purple"},
 }
 
 toc.kits = {
