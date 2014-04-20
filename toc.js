@@ -117,7 +117,7 @@ toc.kits = {
 	initiative: {color: "green"},
 	manipulate: {color: "purple"},
 	poison: {color: "purple"},
-	ripose: {color: "orange"},
+	riposte: {color: "orange"},
 	shield: {color: "green"},
 	sorcery: {color: "blue"},
 }
