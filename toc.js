@@ -105,7 +105,7 @@ toc.archetypes = {
 
 toc.kits = {
 	//acrobatics: {color: "orange"},
-	archery: {color: "blue"},
+	//archery: {color: "blue"},
 	awareness: {color: "green"},
 	berserk: {color: "red"},
 	//block: {color: "green"},
@@ -120,6 +120,7 @@ toc.kits = {
 	riposte: {color: "orange"},
 	shield: {color: "green"},
 	sorcery: {color: "blue"},
+	resilience: {color: "green"},
 }
 
 toc.spells = {
