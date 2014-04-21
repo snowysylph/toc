@@ -92,7 +92,8 @@ toc.printChar = function printChar (char){
 	if ($("#traitsText").val()) output += "\n"+ $("#traitsText").val();
 	
 	$("#preview").html(bb.parse(output));
-	$("#output").text(output);
+	$("#output").empty()
+	$("#outout").val(output);
 	return output;
 }
 
