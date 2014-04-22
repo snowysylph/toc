@@ -63,7 +63,10 @@ toc.buildChar = function buildChar (){
 		charm: $("#charm").val(),
 	};
 	
-	char.maxHealth = 4 * char.stamina;
+	if (char.kits[0] == "endurance" || char.kits[1] == "endurance"){
+		char.maxHealth = 5 * char.stamina;
+	} else char.maxHealth = 4 * char.stamina;
+	
 	char.maxMana = 0;
 	if (char.archetype == "mage") char.maxMana += 12;
 	if (char.kits[0] == "sorcery") char.maxMana += 4;
