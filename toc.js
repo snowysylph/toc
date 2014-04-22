@@ -2,7 +2,7 @@
 var toc = {};
 
 toc.init = function init (){
-	$(".stat").spinner({min: 3, max: 8, stop: toc.update}).val(3);
+	$(".stat").spinner({min: 0, max: 8, stop: toc.update}).val(3);
 	$("#health").spinner({min: 0, stop: toc.update}).val(0);
 	$("#mana").spinner({min: 0, stop: toc.update}).val(0);
 	
