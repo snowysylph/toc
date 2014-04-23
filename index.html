@@ -1,13 +1,15 @@
 
 <head>
+<title>ToC Character Builder</title>
 <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
 <style>
 .stat {width: 20px;}
-#health {width: 20px;}
-#mana {width: 20px;}
-#container {width: 500px;}
-.stats { text-align:right; padding: 5px; vertical-align:top;}
-.traits { text-align:left; padding: 5px; vertical-align:top;}
+.ui-tabs-panel { font-family:times; font-size:initial; }
+.ui-widget textarea { font-family: courier; }
+#health {width: 25px;}
+#mana {width: 25px;}
+#container {margin:auto;}
+.stats, .traits { text-align:right; padding: 5px; vertical-align:top; border:1px solid black;}
 .print { padding: 10px; border: 1px solid black; width:600px;}
 </style>
 <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
@@ -25,40 +27,74 @@ $(function (){
 <body>
 <h2>Tournament of Champions Character Builder</h2>
 <div id="container">
-	<div>Name: <input type="text" id="name" value="Player"></div>
+	<div>Name: <input type="text" id="name" value="Player" class="textInput"></div>
 	<div class="status">
+		<button id="maxStatus">Max</button>
 		Health: <input type="text" id="health">/<span id="maxHealth"></span>
 		<span class="magic"> Mana: <input type="text" id="mana" value=0>/<span id="maxMana" /></span></span>
-		<br><button id="maxStatus">Max</button>
 	</div>
-	<table style="width: 400px">
+	<table style="width: 1000px; height: 450px;" id="content">
 	<tr>
-	<td class="stats" style="width: 50%">
+	<td class="stats" style="width: 150px">
 		<div>Strength: <input id="strength" class="stat"></div>
 		<div>Speed: <input id="speed" class="stat"></div>
 		<div>Stamina: <input id="stamina" class="stat"></div>
 		<div>Agility: <input id="agility" class="stat"></div>
 		<div>Will: <input id="will" class="stat"></div>
 		<div>Charm: <input id="charm" class="stat"></div>
-		<div><i>Stat Points Used: <span id="statTotal"></span></i></div>
+		<div><i>Points Used: <span id="statTotal"></span>/34</i></div>
 	</td>
-	<td class="traits">
+	<td class="traits" style="width: 175px">
 		<div>Archetype: <select id="archetype"></select></div>
 		<div>Kit #1: <select id="kit1" class="kit"></select></div>
 		<div>Kit #2: <select id="kit2" class="kit"></select></div>
-		<div class="magic">
-			<div><i>Spells and Masteries can written in under "Extra Trait Text" for now.</i></div>
+		<div class="magic"><i>Spells & Masteries:
+			<span id="magicUsed"></span>/<span id="magicMax"></span>
+			</i>
+		</div>
+		
+	</td>
+	<td>
+		<div id="tabs" style="width: 600px; height: 450px">
+			<ul>
+				<li><a href="#tabs-output">Output</a></li>
+				<li><a href="#tabs-magic">Magic</a></li>
+				<li><a href="#tabs-io">Import/Export</a></li>
+			</ul>
+			<div id="tabs-output">
+				
+				<table style="height: 100px">
+				<tr>
+					<td>Extra Status Text:<br><textarea id="statusText" class="textInput"></textarea></td>
+				<td style="width:50%">Extra Trait Text:<br><textarea id="traitsText" class="textInput"></textarea></td>
+				</tr>
+				</table>
+				<div id="preview" style="height: 75px"></div>
+				<textarea id="output" style="width: 500px; height:100px"></textarea>
+			</div>
+			<div id="tabs-magic">
+				<table style="margin:auto">
+				<tr>
+					<td id="spells">
+						<div><b>Spells</b></div>
+					</td>
+					<td id="masteries">
+						<div><b>Masteries</b></div>
+					</td>
+				</tr>
+				</table>
+			</div>
+			<div id="tabs-io">
+				<div>
+					<button id="io-import">Import</button>
+					<button id="io-export">Export</button>
+				</div>
+				<textarea id="io-data"></textarea>
+			</div>
 		</div>
 	</td>
 	</tr>
 	</table>
-</div>
-<div>Extra Status Text:<br><textarea id="statusText"></textarea></div>
-<div>Extra Trait Text:<br><textarea id="traitsText"></textarea></div>
-
-<div class="print">
-	<div id="preview"></div>
-	<textarea id="output"></textarea>
 </div>
 
 </body>
