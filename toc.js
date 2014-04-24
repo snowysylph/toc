@@ -27,6 +27,9 @@ toc.init = function init (){
 			"</input></div>"));
 	})
 	
+	toc.subkits($("#kit1"))
+	toc.subkits($("#kit2"))
+	
 	$("input, select").on("change", toc.update)
 	$(".textInput").on("input", toc.update)
 	
@@ -100,13 +103,30 @@ toc.clear = function clear (){
 	toc.update();
 }
 
-toc.update = function update (){
+toc.subkits = function subkits (elem){
+
+	var kitName = $(elem).val(),
+			kit = toc.kits[kitName];
+	
+	if (kit.subkits){
+		$("#sub"+ $(elem).attr("id")).empty().show();
+		kit.subkits.forEach(function (subkit){
+			$("#sub"+ $(elem).attr("id")).append($("<option value='"+ subkit +"'>"+ 
+				toc.capWords(subkit) + "</option>"))
+		})
+	} else {
+		$("#sub"+ elem.id).empty().hide();
+	}
+}
+
+toc.update = function update (event){
 	if ($("#archetype").val() == "mage"){
 		$("[value = 'magic missile']").prop("checked", true);
 	}
 	
-	var char = toc.buildChar();
+	if( event && ($(event.target).hasClass("kit"))) toc.subkits(event.target);
 	
+	var char = toc.buildChar();
 	
 	$("#maxHealth").text(char.maxHealth);
 	$("#maxMana").text(char.maxMana);
@@ -142,6 +162,7 @@ toc.buildChar = function buildChar (){
 		archetype: $("#archetype").val(),
 		
 		kits: [$("#kit1").val(), $("#kit2").val()],
+		subkits: [$("#subkit1").val(), $("#subkit2").val()],
 		spells: [],
 		masteries: [],
 		
@@ -188,10 +209,18 @@ toc.printChar = function printChar (char){
 
 	if ($("#statusText").val()) output += " | "+ $("#statusText").val();
 	
-	output += "\n[color="+ toc.archetypes[char.archetype].color +"]"+ toc.capWords(char.archetype) +"[/color]"+ 
-		" | [color="+ toc.kits[char.kits[0]].color +"]"+ toc.capWords(char.kits[0]) +"[/color],"+
-		" [color="+ toc.kits[char.kits[1]].color +"]"+ toc.capWords(char.kits[1]) +"[/color]"+
-		" ( STR "+ char.strength +" | SPD "+ char.speed +" | STA "+ char.stamina +
+	output += "\n[color="+ toc.archetypes[char.archetype].color +"]"+ 
+		toc.capWords(char.archetype) +"[/color]"+ " | ";
+		
+	output += "[color="+ toc.kits[char.kits[0]].color +"]"+ toc.capWords(char.kits[0]) +
+		"[/color]";
+	if(char.subkits[0]) output += " ([i]"+ toc.capWords(char.subkits[0]) +"[/i])";	
+	
+	output += ", [color="+ toc.kits[char.kits[1]].color +"]"+ 
+		toc.capWords(char.kits[1]) +"[/color]";
+	if(char.subkits[1]) output += " ([i]"+ toc.capWords(char.subkits[1]) +"[/i])";	
+	
+	output += " ( STR "+ char.strength +" | SPD "+ char.speed +" | STA "+ char.stamina +
 		" | AGI "+ char.agility +" | WIL "+ char.will + " | CHA "+ char.charm + " )";	
 		
 	if (char.maxMana){
@@ -234,7 +263,8 @@ toc.archetypes = {
 toc.kits = {
 	//acrobatics: {color: "orange"},
 	//archery: {color: "blue"},
-	aura: {color: "green"},
+	aura: {color: "green", subkits: ["clear mind", "nurture", "immunity", "dampening",
+		"hardened", "dodge", "charge", "strategic"]},
 	awareness: {color: "green"},
 	berserk: {color: "red"},
 	//block: {color: "green"},
@@ -245,11 +275,12 @@ toc.kits = {
 	keen: {color: "orange"},
 	initiative: {color: "green"},
 	manipulate: {color: "purple"},
-	poison: {color: "purple"},
+	poison: {color: "purple", subkits: ["chill", "constitution", "drain", "haunt",
+		"immunity", "weakining", "life leech"]},
 	regeneration: {color: "green"},
 	resilience: {color: "green"},
 	riposte: {color: "orange"},
-	shield: {color: "green", subkits: ["block", "spell"]},
+	shield: {color: "green", subkits: ["block", "barrier"]},
 	sorcery: {color: "blue"},
 	support: {color: "blue"},
 }

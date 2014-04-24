@@ -27,34 +27,18 @@ $(function (){
 <body>
 <h2>Tournament of Champions Character Builder</h2>
 <div id="container">
-	<div>Name: <input type="text" id="name" value="Player" class="textInput"></div>
-	<div class="status">
-		<button id="maxStatus">Max</button>
-		Health: <input type="text" id="health">/<span id="maxHealth"></span>
-		<span class="magic"> Mana: <input type="text" id="mana" value=0>/<span id="maxMana" /></span></span>
-	</div>
+	
 	<table style="width: 1000px; height: 450px;" id="content">
 	<tr>
-	<td class="stats" style="width: 150px">
-		<div>Strength: <input id="strength" class="stat"></div>
-		<div>Speed: <input id="speed" class="stat"></div>
-		<div>Stamina: <input id="stamina" class="stat"></div>
-		<div>Agility: <input id="agility" class="stat"></div>
-		<div>Will: <input id="will" class="stat"></div>
-		<div>Charm: <input id="charm" class="stat"></div>
-		<div><i>Points Used: <span id="statTotal"></span>/34</i></div>
-	</td>
-	<td class="traits" style="width: 175px">
-		<div>Archetype: <select id="archetype"></select></div>
-		<div>Kit #1: <select id="kit1" class="kit"></select></div>
-		<div>Kit #2: <select id="kit2" class="kit"></select></div>
-		<div class="magic"><i>Spells & Masteries:
-			<span id="magicUsed"></span>/<span id="magicMax"></span>
-			</i>
+	<td colspan=2>
+		<div>Name: <input type="text" id="name" value="Player" class="textInput"></div>
+		<div class="status">
+			<button id="maxStatus">Max</button>
+			Health: <input type="text" id="health">/<span id="maxHealth"></span>
+			<span class="magic"> Mana: <input type="text" id="mana" value=0>/<span id="maxMana" /></span></span>
 		</div>
-		
 	</td>
-	<td>
+	<td rowspan=2>
 		<div id="tabs" style="width: 600px; height: 450px">
 			<ul>
 				<li><a href="#tabs-output">Output</a></li>
@@ -91,6 +75,28 @@ $(function (){
 				</div>
 				<textarea id="io-data"></textarea>
 			</div>
+		</div>
+	</td>
+	</tr>
+	<tr>
+	<td class="stats" style="width: 150px">
+		<div>Strength: <input id="strength" class="stat"></div>
+		<div>Speed: <input id="speed" class="stat"></div>
+		<div>Stamina: <input id="stamina" class="stat"></div>
+		<div>Agility: <input id="agility" class="stat"></div>
+		<div>Will: <input id="will" class="stat"></div>
+		<div>Charm: <input id="charm" class="stat"></div>
+		<div><i>Points Used: <span id="statTotal"></span>/34</i></div>
+	</td>
+	<td class="traits" style="width: 175px">
+		<div>Archetype: <select id="archetype"></select></div>
+		<div>Kit #1: <select id="kit1" class="kit"></select></div>
+		<div><select id="subkit1"></select></div>
+		<div>Kit #2: <select id="kit2" class="kit"></select></div>
+		<div><select id="subkit2"></select></div>
+		<div class="magic"><i>Spells & Masteries:
+			<span id="magicUsed"></span>/<span id="magicMax"></span>
+			</i>
 		</div>
 	</td>
 	</tr>
